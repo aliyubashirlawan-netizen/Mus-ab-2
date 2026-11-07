@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mus'ab ID - Student ID card</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="page">
+
+    <aside class="panel">
+      <img class="brand" src="logo.png" alt="Mus'ab ID logo">
+
+      <div class="panel-inner">
+        <h1>Get your student ID</h1>
+        <p class="lead">Enter your details and we will make a card with a front, a back and a QR code.</p>
+
+        <form id="id-form" novalidate>
+          <div class="field">
+            <label for="name">Full name</label>
+            <input type="text" id="name" maxlength="28" autocomplete="name" placeholder="Musa Ibrahim">
+          </div>
+
+          <div class="field">
+            <label for="school">School</label>
+            <input type="text" id="school" maxlength="40" placeholder="University of Jos">
+          </div>
+
+          <div class="field">
+            <label for="course">Course</label>
+            <input type="text" id="course" maxlength="40" placeholder="Computer Science">
+          </div>
+
+          <p id="error" class="error" role="alert"></p>
+
+          <button type="submit">Submit</button>
+        </form>
+      </div>
+    </aside>
+
+    <main class="stage">
+
+      <div id="placeholder" class="placeholder">
+        <p>Your card will show up here once you fill in the form.</p>
+      </div>
+
+      <section id="card" class="hidden" aria-label="Your student ID card">
+
+        <div class="sides" role="group" aria-label="Choose a side of the card">
+          <button type="button" id="show-front" class="side-btn active" aria-pressed="true">Front</button>
+          <button type="button" id="show-back" class="side-btn" aria-pressed="false">Back</button>
+        </div>
+
+        <div class="card-wrap">
+          <div class="card-inner" id="card-inner">
+
+            <!-- FRONT -->
+            <div class="face front" id="face-front">
+              <div class="front-head">
+                <span class="emblem" aria-hidden="true"></span>
+                <span class="wordmark">Mus'ab ID</span>
+                <span class="head-right">
+                  <span class="small">Student ID</span>
+                  <span class="idnum" id="card-idnum"></span>
+                </span>
+              </div>
+
+              <div class="front-body">
+                <div class="photo" id="card-initials" aria-hidden="true"></div>
+                <div class="details">
+                  <p class="name" id="card-name"></p>
+                  <p class="label">School</p>
+                  <p class="value" id="card-school"></p>
+                  <p class="label">Course</p>
+                  <p class="value" id="card-course"></p>
+                </div>
+              </div>
+              <div class="stripe"></div>
+            </div>
+
+            <!-- BACK -->
+            <div class="face back" id="face-back" aria-hidden="true">
+              <div class="stripe top"></div>
+              <div class="back-body">
+                <div class="qr-tile" id="qr" role="img" aria-label="QR code with the card details"></div>
+                <div class="back-text">
+                  <p class="scan">Scan to check this card</p>
+                  <p class="back-id"><span id="back-idnum"></span></p>
+                  <p class="note">Issued <span id="card-date"></span>. If you find this card, please return it to the school named on the front.</p>
+                  <div class="sign"><span>Holder's signature</span></div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <p class="hint">Tap the card to turn it over.</p>
+      </section>
+
+    </main>
+  </div>
+
+  <script src="qr.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
